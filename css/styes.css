@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "VT323", monospace;
+  background-color: #333;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+h1 {
+  text-align: center;
+  font-size: 80px;
+  color: aliceblue;
+}
+#piso {
+  display: none;
+}
+.canvas-container {
+  position: relative;
+  width: 352px;
+  height: 198px;
+  outline: 1px solid #fff;
+  margin: 0 auto;
+  transform: scale(3) translateY(25%);
+  image-rendering: pixelated;
+}
+
+.boton-container {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+/*Aplicar Efecto:
+ https://www.youtube.com/watch?v=ois8ipBUgfk&ab_channel=OnlineTutorials */
+.boton-container button {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.invisible {
+  display: none;
+}
+canvas {
+  background-color: aquamarine;
+}
