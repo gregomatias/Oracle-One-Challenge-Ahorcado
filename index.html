@@ -15,7 +15,7 @@
     <title>Ahorcado</title>
   </head>
   <body>
-    <h1 id="titulo">Vienvenido al Ahorcado</h1>
+    <h1 id="titulo">Bienvenido al ahorcado</h1>
 
     <div class="canvas-container">
       <canvas id="canvas" width="352" height="198"></canvas>
@@ -23,7 +23,17 @@
     <div class="boton-container">
       <button id="boton-inicio">Inicio</button>
     </div>
+    <div id="contenedor-letras">
+      <input id="input-letras" type="text" placeholder="Ingrese una letra" />
+    </div>
 
+    <img
+      class="invisible" id="img-corazon"
+      src="img/corazon.png"
+      width="64"
+      height="64"
+      alt="corazon"
+    />
     <img
       class="invisible"
       id="img-plataforma"
@@ -40,5 +50,6 @@
     />
 
     <script src="js/scripts.js"></script>
+    <script src="js/juego.js"></script>
   </body>
 </html>
