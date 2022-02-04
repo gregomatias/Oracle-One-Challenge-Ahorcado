@@ -43,6 +43,11 @@ h1 {
   height: 50px;
   border-radius: 5px;
 }
+#contenedor-letras{
+  margin-top: 250px;
+  text-align: center;
+
+}
 
 .invisible {
   display: none;
