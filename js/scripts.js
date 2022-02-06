@@ -29,6 +29,7 @@ botonInicio.addEventListener("click", function () {
 
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
+  abecedario.textContent ="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
   //Borra Canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,7 +76,7 @@ inputLetras.addEventListener("input", function () {
   palabraConAciertosUnida = pintaPalabraConAciertos(palabraConAciertos);
 
   if (cantidadDeVidas == 0) {
-    pintaFinDelJuego();
+    perdisteElJuego();
   }
   if (palabraRandom == palabraConAciertosUnida) {
     ganasteElJuego();
@@ -165,7 +166,7 @@ function devuelvePalabraRandom() {
   return palabras[indiceRandom];
 }
 
-function pintaFinDelJuego() {
+function perdisteElJuego() {
   //Borra Canvas
   ctx.drawImage(imagenPlataforma, 0, 0);
   pintaPalabraConAciertos(palabraRandom);
@@ -177,6 +178,7 @@ function pintaFinDelJuego() {
 
   inputLetras.classList.add("invisible");
   botonInicio.classList.remove("invisible");
+  abecedario.classList.add("invisible");
 }
 function ganasteElJuego() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -188,6 +190,7 @@ function ganasteElJuego() {
   ctx.fillText("Ganaste el juego!!!", canvas.width / 2, canvas.height / 2 - 20);
   inputLetras.classList.add("invisible");
   botonInicio.classList.remove("invisible");
+  abecedario.classList.add("invisible");
   ctx.drawImage(imagenVictimaGano, canvas.width / 2 - 36, 75);
   ctx.drawImage(imagenCorazon, canvas.width / 2 + 25, 95, 16, 16);
 }
