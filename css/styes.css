@@ -27,7 +27,7 @@ h1 {
 #canvas {
   outline: 1px solid #fff;
   image-rendering: pixelated;
-  background-color: aquamarine;
+  background-color: rgb(74, 213, 223);
 }
 
 /*Aplicar Efecto:

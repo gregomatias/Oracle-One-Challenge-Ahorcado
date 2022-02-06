@@ -2,6 +2,8 @@ var contenedorCanvas = document.querySelector(".canvas-container");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var imagenPlataforma = document.getElementById("img-plataforma");
+var imagenSoldado = document.getElementById("img-soldado");
+var imagenCura = document.getElementById("img-cura");
 var imagenCorazon = document.getElementById("img-corazon");
 var imagenVictima = document.getElementById("img-victima");
 var botonInicio = document.getElementById("boton-inicio");
@@ -10,8 +12,10 @@ var palabraRandom = "";
 var palabraConAciertos = [];
 
 var cantidadDeVidas = 7;
-var leftCut = [71, 0, 142, 71, 0, 142, 71, 0];
-var topCut = [118, 118, 59, 59, 59, 0, 0, 0];
+/* var leftCut = [71, 0, 142, 71, 0, 142, 71, 0];
+var topCut = [118, 118, 59, 59, 59, 0, 0, 0]; */
+var leftCut = [138, 0, 276, 138, 0, 276, 138, 0];
+var topCut = [230, 230, 115, 115, 115, 0, 0, 0];
 
 /* contenedorCanvas.style.transform = "scale(1)"; */
 ctx.font = "30px VT323";
@@ -32,6 +36,8 @@ botonInicio.addEventListener("click", function () {
   pintaVidasDeCorazones(cantidadDeVidas);
 
   ctx.drawImage(imagenPlataforma, 0, 0);
+  ctx.drawImage(imagenCura, 0, 75);
+  ctx.drawImage(imagenSoldado, 260, 75);
 
   palabraRandom = devuelvePalabraRandom();
 
@@ -51,8 +57,6 @@ inputLetras.addEventListener("input", function () {
   var letraIngresada = depuraTexto(inputLetras.value);
   inputLetras.value = "";
 
-  //Borra un rectangulo debajo del canvas letras anteriores o guiones
-  ctx.clearRect(0, canvas.height - 40, canvas.width, 40);
   var acierto = false;
   for (let i = 0; i < palabraRandom.length; i++) {
     if (letraIngresada == palabraRandom[i]) {
@@ -87,10 +91,10 @@ function depuraTexto(textoIngresado) {
 }
 
 function muevoImagenDeLaVictima(cantidadDeVidas) {
-  var x = 130;
-  var y = 39;
-  var whidthCut = 72;
-  var heightCut = 60;
+  var x = 80; //130
+  var y = 37; //39
+  var whidthCut = 138; //72
+  var heightCut = 115; //60
 
   ctx.drawImage(
     imagenVictima,
@@ -100,8 +104,8 @@ function muevoImagenDeLaVictima(cantidadDeVidas) {
     heightCut,
     x,
     y,
-    72, //Escala
-    60 //Escala
+    138, //Escala72
+    115 //Escala60
   );
 }
 
@@ -109,10 +113,14 @@ function pintaVidasDeCorazones(cantidadDeVidas) {
   var posicionCorazon = 32;
   ctx.clearRect(0, 0, canvas.width, 35);
   for (i = 0; i < cantidadDeVidas; i++) {
-    ctx.drawImage(imagenCorazon, posicionCorazon * i, 0);
+    ctx.drawImage(imagenCorazon, posicionCorazon * i, 0, 16, 16);
   }
 }
 function pintaPalabraConAciertos(palabraConAciertos) {
+  //Borra un rectangulo debajo del canvas letras anteriores o guiones
+  /* ctx.clearRect(0, canvas.height - 40, canvas.width, 40); */
+  //En lugar de borrar con clearRect pinto nuevamente el fondo.
+  ctx.drawImage(imagenPlataforma, 0, 0);
   var y = 196;
   var palabraUnida = "";
   var x =
@@ -123,8 +131,8 @@ function pintaPalabraConAciertos(palabraConAciertos) {
     palabraUnida = palabraUnida + palabraConAciertos[i] + " ";
   }
 
-  ctx.fillStyle = "#fffff";
-  ctx.font = "40px VT323";
+  ctx.fillStyle = "#cbdbfc";
+  ctx.font = "30px VT323";
   ctx.fillText(palabraUnida, x, y);
 }
 
@@ -144,17 +152,14 @@ function devuelvePalabraRandom() {
 
 function pintaFinDelJuego() {
   //Borra Canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(imagenPlataforma, 0, 0);
+  pintaPalabraConAciertos(palabraRandom);
 
-  ctx.fillStyle = "#fffff";
+  ctx.fillStyle = "#222034";
   ctx.font = "20px VT323";
   ctx.textAlign = "center";
-  ctx.fillText("Lo siento, perdiste", canvas.width / 2, canvas.height / 2);
-  ctx.fillText(
-    "Era: " + palabraRandom,
-    canvas.width / 2,
-    canvas.height / 2 + 20
-  );
+  ctx.fillText("Lo siento, perdiste", canvas.width / 2,20);
+ 
   inputLetras.classList.add("invisible");
   botonInicio.classList.remove("invisible");
 }
