@@ -19,39 +19,51 @@ h1 {
   display: none;
 }
 .canvas-container {
-  position: relative;
-  width: 352px;
-  height: 198px;
-  outline: 1px solid #fff;
-  margin: 0 auto;
-  transform: scale(3) translateY(25%);
-  image-rendering: pixelated;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.boton-container {
-  position: relative;
-  width: 200px;
-  height: 50px;
-  margin: 0 auto;
-  margin-top: 10px;
+#canvas {
+  outline: 1px solid #fff;
+  image-rendering: pixelated;
+  background-color: aquamarine;
 }
 
 /*Aplicar Efecto:
  https://www.youtube.com/watch?v=ois8ipBUgfk&ab_channel=OnlineTutorials */
-.boton-container button {
-  width: 200px;
-  height: 50px;
+.boton-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#boton-inicio {
+  font-family: "VT323", monospace;
+  width: 100px;
+  height: 30px;
   border-radius: 5px;
 }
-#contenedor-letras{
-  margin-top: 250px;
+
+#contenedor-letras {
   text-align: center;
 
+}
+
+#input-letras::placeholder  {
+  text-align: center; 
+  font-family: "VT323", monospace; 
+  font-size: 20px;                 
 }
 
 .invisible {
   display: none;
 }
-canvas {
-  background-color: aquamarine;
+
+@media (min-width: 710px) {
+  .canvas-container {
+    transform: scale(2) translateY(25%);
+  }
+  .boton-container {
+    margin-top: 210px;
+  }
 }
