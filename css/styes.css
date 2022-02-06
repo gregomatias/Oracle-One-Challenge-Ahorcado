@@ -12,7 +12,7 @@ body {
 }
 h1 {
   text-align: center;
-  font-size: 80px;
+
   color: aliceblue;
 }
 #piso {
@@ -22,6 +22,12 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.contenedor-abcedario{
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: aliceblue;
 }
 
 #canvas {
@@ -66,4 +72,8 @@ h1 {
   .boton-container {
     margin-top: 210px;
   }
+  h1{
+    font-size: 80px;
+  }
 }
+
