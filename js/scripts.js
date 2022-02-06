@@ -6,18 +6,19 @@ var imagenSoldado = document.getElementById("img-soldado");
 var imagenCura = document.getElementById("img-cura");
 var imagenCorazon = document.getElementById("img-corazon");
 var imagenVictima = document.getElementById("img-victima");
+var imagenVictimaGano = document.getElementById("img-victimaGano");
 var botonInicio = document.getElementById("boton-inicio");
 var inputLetras = document.getElementById("input-letras");
 var palabraRandom = "";
 var palabraConAciertos = [];
+var palabraConAciertosUnida = "";
 
 var cantidadDeVidas = 7;
-/* var leftCut = [71, 0, 142, 71, 0, 142, 71, 0];
-var topCut = [118, 118, 59, 59, 59, 0, 0, 0]; */
+
 var leftCut = [138, 0, 276, 138, 0, 276, 138, 0];
 var topCut = [230, 230, 115, 115, 115, 0, 0, 0];
 
-/* contenedorCanvas.style.transform = "scale(1)"; */
+
 ctx.font = "30px VT323";
 ctx.textAlign = "center";
 /* Pantala 1 */
@@ -25,7 +26,7 @@ ctx.fillText("Presiona Inicio", canvas.width / 2, canvas.height / 2);
 
 botonInicio.addEventListener("click", function () {
   /* Pantala 2 */
-  /*  contenedorCanvas.style.transform = "scale(2.2) translateY(25%)"; */
+
 
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
@@ -70,10 +71,14 @@ inputLetras.addEventListener("input", function () {
     muevoImagenDeLaVictima(cantidadDeVidas);
   }
   pintaVidasDeCorazones(cantidadDeVidas);
-  pintaPalabraConAciertos(palabraConAciertos);
+  palabraConAciertosUnida = pintaPalabraConAciertos(palabraConAciertos);
+  
 
   if (cantidadDeVidas == 0) {
     pintaFinDelJuego();
+  }
+  if (palabraRandom == palabraConAciertosUnida) {
+    ganasteElJuego();
   }
 });
 
@@ -134,6 +139,7 @@ function pintaPalabraConAciertos(palabraConAciertos) {
   ctx.fillStyle = "#cbdbfc";
   ctx.font = "30px VT323";
   ctx.fillText(palabraUnida, x, y);
+  return palabraUnida.replace(/\s/g, "");
 }
 
 function llenaPalabraAciertosConGuiones(palabraRandom) {
@@ -158,8 +164,21 @@ function pintaFinDelJuego() {
   ctx.fillStyle = "#222034";
   ctx.font = "20px VT323";
   ctx.textAlign = "center";
-  ctx.fillText("Lo siento, perdiste", canvas.width / 2,20);
- 
+  ctx.fillText("Lo siento, perdiste", canvas.width / 2, 20);
+
   inputLetras.classList.add("invisible");
   botonInicio.classList.remove("invisible");
+}
+function ganasteElJuego() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //En lugar de borrar con clearRect pinto nuevamente el fondo.
+  ctx.drawImage(imagenPlataforma, 0, 0);
+  ctx.fillStyle = "#222034";
+  ctx.font = "30px VT323";
+  ctx.textAlign = "center";
+  ctx.fillText("Ganaste el juego!!!", canvas.width / 2, (canvas.height/2)-20);
+  inputLetras.classList.add("invisible");
+  botonInicio.classList.remove("invisible");
+  ctx.drawImage(imagenVictimaGano, (canvas.width/2)-36, 75);
+  ctx.drawImage(imagenCorazon, (canvas.width/2)+25, 95, 16, 16);
 }
