@@ -6,6 +6,7 @@ var imagenSoldado = document.getElementById("img-soldado");
 var imagenCura = document.getElementById("img-cura");
 var imagenCorazon = document.getElementById("img-corazon");
 var imagenVictima = document.getElementById("img-victima");
+var imagenPortada = document.getElementById("img-portada");
 var imagenVictimaGano = document.getElementById("img-victimaGano");
 var botonInicio = document.getElementById("boton-inicio");
 var inputLetras = document.getElementById("input-letras");
@@ -19,17 +20,21 @@ var cantidadDeVidas = 7;
 var leftCut = [138, 0, 276, 138, 0, 276, 138, 0];
 var topCut = [230, 230, 115, 115, 115, 0, 0, 0];
 
-ctx.font = "30px VT323";
-ctx.textAlign = "center";
-/* Pantala 1 */
-ctx.fillText("Presiona Inicio", canvas.width / 2, canvas.height / 2);
+window.addEventListener("load", function () {
+  ctx.font = "30px VT323";
+  ctx.textAlign = "center";
+  /* Pantala 1 */
+  ctx.fillText("Presiona Inicio", canvas.width / 2, canvas.height / 2 - 50);
+  ctx.drawImage(imagenPlataforma, 0, 0);
+  ctx.drawImage(imagenPortada, 65, 75);
+});
 
 botonInicio.addEventListener("click", function () {
   /* Pantala 2 */
 
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
-  abecedario.textContent ="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+  abecedario.textContent = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
   //Borra Canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
