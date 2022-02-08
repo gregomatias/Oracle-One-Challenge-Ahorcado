@@ -19,7 +19,6 @@ var cantidadDeVidas = 7;
 
 var leftCut = [138, 0, 276, 138, 0, 276, 138, 0];
 var topCut = [230, 230, 115, 115, 115, 0, 0, 0];
-
 window.addEventListener("load", function () {
   ctx.font = "30px VT323";
   ctx.textAlign = "center";
@@ -31,7 +30,6 @@ window.addEventListener("load", function () {
 
 botonInicio.addEventListener("click", function () {
   /* Pantala 2 */
-
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
   abecedario.textContent = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -76,15 +74,22 @@ inputLetras.addEventListener("input", function () {
   if (!acierto) {
     cantidadDeVidas = cantidadDeVidas - 1;
     muevoImagenDeLaVictima(cantidadDeVidas);
+    sfx.loos.play();
+  } else {
+    sfx.goal.play();
   }
+
   pintaVidasDeCorazones(cantidadDeVidas);
+
   palabraConAciertosUnida = pintaPalabraConAciertos(palabraConAciertos);
 
   if (cantidadDeVidas == 0) {
     perdisteElJuego();
+    sfx.gameOver.play();
   }
   if (palabraRandom == palabraConAciertosUnida) {
     ganasteElJuego();
+    sfx.won.play();
   }
 });
 
@@ -172,7 +177,6 @@ function devuelvePalabraRandom() {
 }
 
 function perdisteElJuego() {
-  //Borra Canvas
   ctx.drawImage(imagenPlataforma, 0, 0);
   pintaPalabraConAciertos(palabraRandom);
 

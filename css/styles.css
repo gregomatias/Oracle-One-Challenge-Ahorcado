@@ -9,11 +9,13 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 h1 {
   text-align: center;
 
-  color: aliceblue;
+  color: rgb(200, 207, 212);
 }
 #piso {
   display: none;
@@ -23,7 +25,7 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-.contenedor-abcedario{
+.contenedor-abcedario {
   text-align: center;
   font-size: 20px;
   letter-spacing: 5px;
@@ -53,17 +55,27 @@ h1 {
 #contenedor-letras {
   text-align: center;
   margin-top: 10px;
-
 }
 
-#input-letras::placeholder  {
-  text-align: center; 
-  font-family: "VT323", monospace; 
-  font-size: 20px;                 
+#input-letras::placeholder {
+  text-align: center;
+  font-family: "VT323", monospace;
+  font-size: 20px;
 }
 
 .invisible {
   display: none;
+}
+
+#footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: rgb(200, 207, 212);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @media (min-width: 710px) {
@@ -73,8 +85,7 @@ h1 {
   .boton-container {
     margin-top: 210px;
   }
-  h1{
+  h1 {
     font-size: 80px;
   }
 }
-
