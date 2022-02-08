@@ -131,7 +131,7 @@ function muevoImagenDeLaVictima(cantidadDeVidas) {
 }
 
 function pintaVidasDeCorazones(cantidadDeVidas) {
-  var posicionCorazon = 32;
+  var posicionCorazon = 16;
   ctx.clearRect(0, 0, canvas.width, 35);
   for (i = 0; i < cantidadDeVidas; i++) {
     ctx.drawImage(imagenCorazon, posicionCorazon * i, 0, 16, 16);
@@ -164,7 +164,7 @@ function llenaPalabraAciertosConGuiones(palabraRandom) {
 }
 
 function devuelvePalabraRandom() {
-  var palabras = ["PATO", "PITO", "MAMA", "PAPIRO", "HELADERA"];
+  var palabras = ["OBJETIVOS", "PROGRAMADOR", "JAVASCRIPT", "ALURA", "JAVA"];
 
   var indiceRandom = Math.floor(Math.random() * 5); //De cero a 5
 
