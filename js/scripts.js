@@ -29,6 +29,7 @@ window.addEventListener("load", function () {
 });
 
 botonInicio.addEventListener("click", function () {
+  sfx.gameOver.stop();
   /* Pantala 2 */
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
@@ -169,7 +170,7 @@ function llenaPalabraAciertosConGuiones(palabraRandom) {
 }
 
 function devuelvePalabraRandom() {
-  var palabras = ["OBJETIVOS", "PROGRAMADOR", "JAVASCRIPT", "ALURA", "JAVA"];
+  var palabras = ["OBJETIVOS", "PROGRAMADOR", "SACACORCHO", "ESTRATOSFERA", "ZAPATILLAS"];
 
   var indiceRandom = Math.floor(Math.random() * 5); //De cero a 5
 
