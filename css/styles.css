@@ -44,7 +44,24 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 }
+
+#categoria-palabras{
+  display: flex;
+  font-family: "VT323", monospace;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+}
+#categoria-palabras label{
+  margin-right: 10px;
+}
+#categoria-palabras input{
+  margin-right: 5px;
+}
+
 #boton-inicio {
   font-family: "VT323", monospace;
   width: 100px;
@@ -67,6 +84,8 @@ h1 {
   display: none;
 }
 
+
+
 #footer {
   margin-top: auto;
   display: flex;
@@ -82,9 +101,10 @@ h1 {
   .canvas-container {
     transform: scale(2) translateY(25%);
   }
-  .boton-container {
+  #categoria-palabras{
     margin-top: 210px;
   }
+
   h1 {
     font-size: 80px;
   }

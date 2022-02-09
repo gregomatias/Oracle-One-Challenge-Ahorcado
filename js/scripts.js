@@ -11,6 +11,8 @@ var imagenVictimaGano = document.getElementById("img-victimaGano");
 var botonInicio = document.getElementById("boton-inicio");
 var inputLetras = document.getElementById("input-letras");
 var abecedario = document.getElementById("abecedario");
+var categoriaPalabras = document.getElementById("categoria-palabras");
+
 var palabraRandom = "";
 var palabraConAciertos = [];
 var palabraConAciertosUnida = "";
@@ -19,6 +21,7 @@ var cantidadDeVidas = 7;
 
 var leftCut = [138, 0, 276, 138, 0, 276, 138, 0];
 var topCut = [230, 230, 115, 115, 115, 0, 0, 0];
+
 window.addEventListener("load", function () {
   ctx.font = "30px VT323";
   ctx.textAlign = "center";
@@ -26,11 +29,16 @@ window.addEventListener("load", function () {
   ctx.fillText("Presiona Inicio", canvas.width / 2, canvas.height / 2 - 50);
   ctx.drawImage(imagenPlataforma, 0, 0);
   ctx.drawImage(imagenPortada, 65, 75);
+
+  pintoCategoriaDePalabras();
+
 });
 
 botonInicio.addEventListener("click", function () {
   sfx.gameOver.stop();
   /* Pantala 2 */
+  
+
   cantidadDeVidas = 7;
   botonInicio.classList.add("invisible");
   abecedario.textContent = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -170,7 +178,39 @@ function llenaPalabraAciertosConGuiones(palabraRandom) {
 }
 
 function devuelvePalabraRandom() {
-  var palabras = ["OBJETIVOS", "PROGRAMADOR", "SACACORCHO", "ESTRATOSFERA", "ZAPATILLAS"];
+  switch (buscoCategoriaDePalabrasElegida()) {
+    case "cosas":
+      var palabras = [
+        "OBJETIVOS",
+        "PROGRAMADOR",
+        "SACACORCHO",
+        "ESTRATOSFERA",
+        "ZAPATILLAS",
+      ];
+      break;
+      case "paises":
+        var palabras = [
+          "NORUEGA",
+          "TURKMENISTAN",
+          "CAMERUN",
+          "ARMENIA",
+          "FINLANDIA",
+        ];
+        break;
+        case "animales":
+          var palabras = [
+            "SALAMANDRA",
+            "MAPACHE",
+            "LAGARTO",
+            "ESCORPION",
+            "BALLENA",
+          ];
+          break;
+  
+    default: alert("Error: Categoria Indeterminada");
+      break;
+  }
+
 
   var indiceRandom = Math.floor(Math.random() * 5); //De cero a 5
 
@@ -203,4 +243,22 @@ function ganasteElJuego() {
   abecedario.classList.add("invisible");
   ctx.drawImage(imagenVictimaGano, canvas.width / 2 - 36, 75);
   ctx.drawImage(imagenCorazon, canvas.width / 2 + 25, 95, 16, 16);
+}
+
+function   pintoCategoriaDePalabras(){
+  categoriaPalabras.innerHTML =`
+  <input type="radio" id="cosas" name="categoria" value="cosas" checked>
+  <label for="cosas">Cosas</label>
+  <input type="radio" id="paises" name="categoria" value="paises" >
+  <label for="paises">Paises</label>
+  <input type="radio" id="animales" name="categoria" value="animales">
+  <label for="animales">Animales</label>
+  `
+}
+
+function   buscoCategoriaDePalabrasElegida(){
+  var categoria = document.querySelector('input[name="categoria"]:checked').value;
+
+        return categoria;
+
 }
