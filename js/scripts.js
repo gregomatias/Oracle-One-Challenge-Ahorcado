@@ -250,7 +250,7 @@ function   pintoCategoriaDePalabras(){
   <input type="radio" id="cosas" name="categoria" value="cosas" checked>
   <label for="cosas">Cosas</label>
   <input type="radio" id="paises" name="categoria" value="paises" >
-  <label for="paises">Paises</label>
+  <label for="paises">Países</label>
   <input type="radio" id="animales" name="categoria" value="animales">
   <label for="animales">Animales</label>
   `
