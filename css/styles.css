@@ -99,7 +99,7 @@ h1 {
 
 @media (min-width: 710px) {
   .canvas-container {
-    transform: scale(2) translateY(25%);
+    transform: scale(2) translateY(20%);
   }
   #categoria-palabras{
     margin-top: 210px;
